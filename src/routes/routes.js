@@ -11,7 +11,7 @@ const expMa = require('../controllers/expressMailerController');
 
 r.post(MULTIPLE_EMAIL_SENDER, upload, async (req, res) => {
     const subject_email =  "Correo de prueba de API Masiva";
-    const message_email = "Correo de prueba de API Nodemailer Masivo por NodeJs, express, MongoDb, JWT, Csv-parser, multer.";
+    const message_email = "Correo de prueba de API Nodemailer Masivo por NodeJs, express, MongoDb, JWT, Csv-parser, multer desplegado en Heroku.";
     const filePath = req.file.path;
     try{
         fs.readFile(filePath)
@@ -30,7 +30,7 @@ r.post(MULTIPLE_EMAIL_SENDER, upload, async (req, res) => {
             console.table(response);
         })
         .catch(error => res.status(500).json({ message: error }));
-        //fs.deleteFile(filePath);
+        fs.deleteFile(filePath);
     }catch(err){
         res.status(400).json({
             "message":"Los correos no pueden ser enviados por: "+err 
