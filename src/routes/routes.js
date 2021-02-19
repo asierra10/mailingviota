@@ -10,7 +10,7 @@ const snEm = require('../controllers/sendGridController');
 const expMa = require('../controllers/expressMailerController');
 
 
-r.post(MULTIPLE_EMAIL_SENDER, upload, async (req, res) => {
+r.post(MULTIPLE_EMAIL_SENDER, auth.validateToken, upload, async (req, res) => {
     const subject_email = "Correo de prueba de API Masiva";
     const message_email = "Correo de prueba de API Nodemailer Masivo por NodeJs, express, MongoDb, JWT, Csv-parser, multer desplegado en Heroku.";
     const filePath = req.file.path;
