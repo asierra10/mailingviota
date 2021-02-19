@@ -4,7 +4,7 @@ module.exports = {
     SERVER_PORT: 4000,
     SECRET: 'mailing-alcaldia-viota',
     API_KEY_SENDGRID: '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',
-    DATABASE_USER: 'mongo_root',
+    DATABASE_USER: 'gglobhack',
     DATABASE_PASS: 'M0ng0db2020_ab',
     DATABASE_NAME: 'user-system-db',
     FILES_DIR: path.join(__dirname,'files'),
