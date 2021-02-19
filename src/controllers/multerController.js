@@ -1,6 +1,6 @@
 const multer = require('multer');
 const { FILES_DIR } = require('../path');
-
+console.log(FILES_DIR);
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
         cb(null,FILES_DIR)
