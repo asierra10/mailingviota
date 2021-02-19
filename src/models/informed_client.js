@@ -23,7 +23,7 @@ const informedClientSchema = new mongoose.Schema({
         type: String
     },
     file_number:{
-        type:Number
+        type:String
     },
     date_send:{
         type: Date

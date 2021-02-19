@@ -26,8 +26,7 @@ r.post(MULTIPLE_EMAIL_SENDER, upload, async (req, res) => {
             });
         })
         .then((response) => {
-            console.log("Complete!");
-            console.table(response);
+            console.log("Send complete! "+ response);   
         })
         .catch(error => res.status(500).json({ message: error }));
         fs.deleteFile(filePath);

@@ -8,8 +8,8 @@ module.exports = {
     readFile(filePath){
         const path = filePath;
         const emails = [];
+        const file_numberS = filePath.substr(filePath.indexOf("file-"),filePath.length-filePath.indexOf("file-"))
         return new Promise((resolve, reject) => {
-            console.log(path);
             fs.createReadStream(path)
                 .pipe(csv({}))
                 .on('data',(row) => {
@@ -24,7 +24,7 @@ module.exports = {
                             telephone_client: row["telefono"],
                             email_client: row["email"],
                             city_client: row["ciudad"],
-                            file_number: 1,
+                            file_number: file_numberS,
                             date_send: new Date().toUTCString()
                         });
                         const clientSaved = currentInformedClient.save(); 
