@@ -1,4 +1,4 @@
-//const userSystem = require('../models/user_system');
+const userSystem = require('../models/user_system');
 const jwt = require('jsonwebtoken');
 const { SECRET } = require('../path');
 
@@ -12,8 +12,15 @@ module.exports = {
                     message: "El usuario no está logueado en el sistema, permiso denegado."
                 });
             }else{
-                const decoded = jwt.verify(token,SECRET);
-                next();
+                const userToken = await userSystem.findOne({ token_userSystem:token });
+                if(userToken){
+                    const decoded = jwt.verify(token,SECRET);
+                    next();
+                }else{
+                    res.status(403).json({
+                        message:"El Token no existe, permiso denegado"
+                    });
+                }   
             }
         }catch(err){
             if(err.message == "jwt expired"){

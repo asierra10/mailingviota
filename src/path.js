@@ -14,5 +14,6 @@ module.exports = {
     EMAIL_NAME: 'Dirección de Tesorería Alcaldia de Viotá',
     EMAIL_PORT: 587,
     MULTIPLE_EMAIL_SENDER: '/multiple_sender',
-    SIMPLE_EMAIL_SENDER: '/simple_sender'
+    SIMPLE_EMAIL_SENDER: '/simple_sender',
+    GET_ALL_INFORMED_EMAILS: '/allInformedEmails'
 }

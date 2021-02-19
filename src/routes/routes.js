@@ -3,14 +3,15 @@ const upload  = require('../controllers/multerController');
 const auth = require('../controllers/authController');
 const send = require('../controllers/nodemailerController');
 const fs = require('../controllers/fileSystemController');
-const { MULTIPLE_EMAIL_SENDER, SIMPLE_EMAIL_SENDER } = require('../path');
+const { MULTIPLE_EMAIL_SENDER, SIMPLE_EMAIL_SENDER, GET_ALL_INFORMED_EMAILS } = require('../path');
+const bdTask = require('../controllers/mongooseController');
 const r = Router();
 const snEm = require('../controllers/sendGridController');
 const expMa = require('../controllers/expressMailerController');
 
 
 r.post(MULTIPLE_EMAIL_SENDER, upload, async (req, res) => {
-    const subject_email =  "Correo de prueba de API Masiva";
+    const subject_email = "Correo de prueba de API Masiva";
     const message_email = "Correo de prueba de API Nodemailer Masivo por NodeJs, express, MongoDb, JWT, Csv-parser, multer desplegado en Heroku.";
     const filePath = req.file.path;
     try{
@@ -76,5 +77,7 @@ r.post('/express-mailer',(req, res) => {
             res.status(500).json({ message:"Un error ha ocurrido.", data:error });
         })
 });
+
+r.get(GET_ALL_INFORMED_EMAILS, auth.validateToken, bdTask.getAllInformedEmails);
 
 module.exports = r; 
