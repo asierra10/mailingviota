@@ -1,7 +1,6 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const csv = require('csv-parser');
-const { rejects } = require('assert');
 
 const informedClient = require('../models/informed_client');
 
