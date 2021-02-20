@@ -3,7 +3,8 @@ const upload  = require('../controllers/multerController');
 const auth = require('../controllers/authController');
 const send = require('../controllers/nodemailerController');
 const fs = require('../controllers/fileSystemController');
-const { MULTIPLE_EMAIL_SENDER, SIMPLE_EMAIL_SENDER, GET_ALL_INFORMED_EMAILS } = require('../path');
+const { MULTIPLE_EMAIL_SENDER, SIMPLE_EMAIL_SENDER, GET_ALL_INFORMED_EMAILS,
+        GET_ALL_FILENAMES, GET_ALL_INFORMEDCLIENTS_BY_FILENAME } = require('../path');
 const bdTask = require('../controllers/mongooseController');
 const r = Router();
 const snEm = require('../controllers/sendGridController');
@@ -78,6 +79,13 @@ r.post('/express-mailer',(req, res) => {
         })
 });
 
+//Get all emails 'bout informed clients
 r.get(GET_ALL_INFORMED_EMAILS, auth.validateToken, bdTask.getAllInformedEmails);
+
+//Get all filenames
+r.get(GET_ALL_FILENAMES, auth.validateToken, bdTask.getAllFiles);
+
+//Get all registres 'bout a filename
+r.get(GET_ALL_INFORMEDCLIENTS_BY_FILENAME, auth.validateToken, bdTask.getAllFilesRegistry);
 
 module.exports = r; 

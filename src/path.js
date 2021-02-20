@@ -13,7 +13,9 @@ module.exports = {
     EMAIL_PASS: 'gglobhack#2020', 
     EMAIL_NAME: 'Dirección de Tesorería Alcaldia de Viotá',
     EMAIL_PORT: 587,
-    MULTIPLE_EMAIL_SENDER: '/multiple_sender',
-    SIMPLE_EMAIL_SENDER: '/simple_sender',
-    GET_ALL_INFORMED_EMAILS: '/allInformedEmails'
+    MULTIPLE_EMAIL_SENDER: '/api/multiple_sender',
+    SIMPLE_EMAIL_SENDER: '/api/simple_sender',
+    GET_ALL_INFORMED_EMAILS: '/api/allInformedEmails',
+    GET_ALL_FILENAMES: '/api/allFileNames',
+    GET_ALL_INFORMEDCLIENTS_BY_FILENAME: '/api/getAllInformedClientsByFilename/:fileName'
 }
