@@ -37,20 +37,26 @@ r.post(MULTIPLE_EMAIL_SENDER, auth.validateToken, upload, async (req, res) => {
             "message":"Los correos no pueden ser enviados por: "+err 
         });
     }
-    
 });
 
-r.post(SIMPLE_EMAIL_SENDER, (req, res) => {
+r.post(SIMPLE_EMAIL_SENDER, auth.validateToken, (req, res) => {
     const { dest_email, subject_email, message_email } = req.body;
-    send.sendEmail(dest_email, subject_email, message_email)
+    try{
+        send.sendEmail(dest_email, subject_email, message_email)
         .then(response => {
-            console.log(response);
-            res.status(200).json(response);
+            res.status(200).json({
+                "message":"Correo electronico enviado correctamente",
+                "data":response
+            });
         })
         .catch(error => {
             console.log(error);
-            res.status(500).json(error);
-        })
+            res.status(500).json({ "message": "El correo no ha podido ser enviado por: "+error });
+        });
+    }catch(err){
+        res.status(400).json({ "message": "Algo ha fallado: "+err });
+    }
+    
 });
 
 r.post('/sendgrid', (req, res) => {
