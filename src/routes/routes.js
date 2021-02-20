@@ -12,8 +12,6 @@ const expMa = require('../controllers/expressMailerController');
 
 //Send multiple e-mails
 r.post(MULTIPLE_EMAIL_SENDER, auth.validateToken, upload, async (req, res) => {
-    //const subject_email = "Correo de prueba de API Masiva";
-    //const message_email = "Correo de prueba de API Nodemailer Masivo por NodeJs, express, MongoDb, JWT, Csv-parser, multer desplegado en Heroku.";
     const { subject_email } = req.body;
     const { message_email } = req.body;
     const filePath = req.file.path;

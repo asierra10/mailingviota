@@ -26,7 +26,7 @@ const informedClientSchema = new mongoose.Schema({
         type:String
     },
     date_send:{
-        type: Date
+        type: String
     }
 },{
     collection:'informed_client'

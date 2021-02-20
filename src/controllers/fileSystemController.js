@@ -7,6 +7,7 @@ module.exports = {
     readFile(filePath){
         const path = filePath;
         const emails = [];
+        const fecha = new Date().toLocaleString();
         const file_numberS = filePath.substr(filePath.indexOf("file-"),filePath.length-filePath.indexOf("file-"))
         return new Promise((resolve, reject) => {
             fs.createReadStream(path)
@@ -24,8 +25,9 @@ module.exports = {
                             email_client: row["email"],
                             city_client: row["ciudad"],
                             file_number: file_numberS,
-                            date_send: new Date().toUTCString()
+                            date_send: fecha
                         });
+                        console.log(currentInformedClient.name_client+" "+currentInformedClient.date_send);
                         const clientSaved = currentInformedClient.save(); 
                     }catch(err){
                         return reject(err);
