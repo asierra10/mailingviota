@@ -14,6 +14,7 @@ const expMa = require('../controllers/expressMailerController');
 r.post(MULTIPLE_EMAIL_SENDER, auth.validateToken, upload, async (req, res) => {
     const { subject_email } = req.body;
     const { message_email } = req.body;
+    console.log(subject_email+" "+message_email);
     const filePath = req.file.path;
     try{
         fs.readFile(filePath)

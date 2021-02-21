@@ -27,7 +27,6 @@ module.exports = {
                             file_number: file_numberS,
                             date_send: fecha
                         });
-                        console.log(currentInformedClient.name_client+" "+currentInformedClient.date_send);
                         const clientSaved = currentInformedClient.save(); 
                     }catch(err){
                         return reject(err);
