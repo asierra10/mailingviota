@@ -19,5 +19,7 @@ module.exports = multer({
                 cb(null, false);
                 return cb(new Error('Solo se permiten archivos .CSV'));
             }*/
+            cb(null,true);
+            
         }
     }).single('file');   
