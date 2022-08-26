@@ -32,7 +32,7 @@ r.post(MULTIPLE_EMAIL_SENDER, auth.validateToken, upload, async (req, res) => {
             console.log("Send complete! "+ response);   
         })
         .catch(error => res.status(500).json({ message: error }));
-        fs.deleteFile(filePath);
+        //fs.deleteFile(filePath);
     }catch(err){
         res.status(400).json({
             "message":"Los correos no pueden ser enviados por: "+err 
